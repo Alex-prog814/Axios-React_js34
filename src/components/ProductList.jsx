@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const ProductList = ({ getProducts, products }) => {
+const ProductList = ({ getProducts, products, deleteProduct }) => {
 
   useEffect(() => {
     getProducts();
@@ -25,7 +25,7 @@ const ProductList = ({ getProducts, products }) => {
               <Button variant="warning className='m-1'">Details</Button>
             </Link>
 
-            <Button variant="danger" className='m-1'>Delete</Button>
+            <Button variant="danger" className='m-1' onClick={() => deleteProduct(product.id)}>Delete</Button>
           </Card.Body>
           </Card>
       ))}

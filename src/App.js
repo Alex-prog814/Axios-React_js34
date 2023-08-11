@@ -33,14 +33,19 @@ const App = () => {
     getProducts();
   };
 
+  async function deleteProduct(id) {
+    await axios.delete(`${API}/${id}`);
+    getProducts();
+  };
+
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<ProductList getProducts={getProducts} products={products} />} />
+        <Route path="/" element={<ProductList getProducts={getProducts} products={products} deleteProduct={deleteProduct} />} />
         <Route path="/add" element={<AddForm addProduct={addProduct} />} />
         <Route path="/edit/:id" element={<EditForm getOneProduct={getOneProduct} oneProduct={oneProduct} updateProduct={updateProduct} />} />
-        <Route path="/details/:id" element={<Details />} />
+        <Route path="/details/:id" element={<Details getOneProduct={getOneProduct} oneProduct={oneProduct} />} />
         <Route path="/contacts" element={<h1>Contacts</h1>} />
       </Routes>
       <Footer />
